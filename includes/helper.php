@@ -26,7 +26,7 @@ if (!function_exists('db_create')) {
         mysqli_query($conn, $sql);
         $id = mysqli_insert_id($conn);
         $first = mysqli_query($conn, "select * from $table where id = $id");
-        mysqli_close($conn);
+
         return mysqli_fetch_assoc($first);
     }
 }
@@ -61,7 +61,7 @@ if (!function_exists('db_update')) {
         mysqli_query($conn, $sql);
 
         $first = mysqli_query($conn, "select * from $table where id = $id");
-        mysqli_close($conn);
+
         return mysqli_fetch_assoc($first);
     }
 }
