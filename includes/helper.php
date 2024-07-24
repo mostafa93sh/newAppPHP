@@ -66,4 +66,56 @@ if (!function_exists('db_update')) {
     }
 }
 
-var_dump(db_update('users', ['name' => 'ahmed2', 'email' => 'ahmed2@test.com'], 1));
+// var_dump(db_update('users', ['name' => 'ahmed2', 'email' => 'ahmed2@test.com'], 1));
+
+
+/**
+ * Delete function
+ * @param string $table
+ * @param int $id
+ * 
+ */
+
+if (!function_exists('db_delete')) {
+    function db_delete(string $table, int $id)
+    {
+        global $conn;
+        $query = mysqli_query($conn, "delete from $table where id = $id");
+        return $query;
+    }
+}
+
+/**
+ * find by id function
+ * @param string $table
+ * @param int $id
+ * @return array as assoc
+ */
+if (!function_exists('db_find_by_id')) {
+    function db_find_by_id(string $table, int $id)
+    {
+        global $conn;
+        $query = mysqli_query($conn, "select * from $table where id = $id");
+        $data = mysqli_fetch_assoc($query);
+        return $data;
+    }
+}
+
+/**
+ * find first function
+ * @param string $table
+ * @param string $query_column
+ * @return array as assoc
+ */
+
+if (!function_exists('db_find_first')) {
+    function db_find_first(string $table, string $query_column)
+    {
+        global $conn;
+        $query = mysqli_query($conn, "select * from $table $query_column");
+        $data = mysqli_fetch_assoc($query);
+        return $data;
+    }
+}
+
+var_dump(db_find_first('users', "where name = 'ahmed2'"));
