@@ -1,9 +1,9 @@
 <?php
-$databaseInfo= require_once __DIR__.'/../config/database-info.php';
-$conn = mysqli_connect('localhost','root','');
-if(!$conn){
+$databaseInfo = require_once __DIR__ . '/../config/database-info.php';
+$conn = mysqli_connect('localhost', 'root', '', 'users');
+if (!$conn) {
     echo 'Something went wrong';
-}else{
+} else {
     echo 'connected to database successfully';
 }
 
